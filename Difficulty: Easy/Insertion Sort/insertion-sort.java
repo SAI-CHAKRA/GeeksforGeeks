@@ -42,17 +42,24 @@ class Main {
 class Solution {
     // Please change the array in-place
     public void insertionSort(int arr[]) {
-        // code here
+        // recursive insertion sort
+        int n = arr.length;
+        insertion_sort(arr,n,0);
         
-        for(int i=1;i<arr.length;i++){
-            int prev = i-1;
-            int curr = arr[i];
-            
-            while(prev>=0 && arr[prev] > curr){
-                arr[prev+1] = arr[prev];
-                prev--;
-            }
-            arr[prev+1] = curr;
+    }
+    public void insertion_sort(int arr[], int n,int i){
+        if (i==n) return;
+        
+        int prev = i-1;
+        int curr = arr[i];
+        
+        while(prev >= 0 && arr[prev] > curr){
+            int temp = arr[prev];
+            arr[prev] = arr[prev+1];
+            arr[prev+1] = temp;
+            prev--;
         }
+       
+        insertion_sort(arr,n,i+1);
     }
 }
